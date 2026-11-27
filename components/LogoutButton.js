@@ -1,0 +1,18 @@
+'use client';
+import { useRouter } from 'next/navigation';
+
+export default function LogoutButton() {
+  const router = useRouter();
+  return (
+    <button
+      className="link-plain"
+      onClick={async () => {
+        await fetch('/api/logout', { method: 'POST' });
+        router.push('/admin/login');
+        router.refresh();
+      }}
+    >
+      Sign out
+    </button>
+  );
+}
